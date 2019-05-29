@@ -1,0 +1,23 @@
+.reg {
+    font-family: 'HelveticaNeue', sans-serif;
+    background-color: var(--primary-color-background);
+    color: var(--primary-color);
+    font-size: var(--primary-font-size);
+}
+
+.logo {
+    text-align: center;
+    background-color: var(--secondary-color-background);
+    width:100%;
+    min-width: 400px;
+}
+
+.info {
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+}
+
+.colored {
+    color: var(--accent-color);
+}

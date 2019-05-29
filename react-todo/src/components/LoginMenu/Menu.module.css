@@ -1,0 +1,14 @@
+.menu{
+    text-align: center;
+}
+
+.field {
+    background-color: white;
+    border-radius: 0;
+    color: var(--secondary-color);
+}
+
+.enter {
+    background-color: var(--button-color);
+    border-color: var(--button-color);
+}

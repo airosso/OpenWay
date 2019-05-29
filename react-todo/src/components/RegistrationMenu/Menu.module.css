@@ -1,0 +1,74 @@
+.menu {
+    padding: 10px;
+    width:60%;
+    margin: 0 auto;
+    color: var(--primary-color);
+}
+
+input {
+    color: var(--primary-color);
+    background-color: var(--input-background);
+    font-size: var(--primary-font-size);
+    border: 2px solid var(--accent-background);
+    border-radius: 10px 10px 10px 10px;
+    margin-left: 10px;
+}
+
+a {
+    color: #ffe83f;
+}
+
+a:hover {
+    color: #dbd72d;
+}
+
+.text {
+    width: 50%;
+}
+
+.comment {
+    margin-top: 8px;
+    font-size: var(--primary-font-size);
+    background-color: var(--input-background);
+    border: 2px solid var(--accent-background);
+    border-radius: 10px 10px 10px 10px;
+    width: 100%;
+}
+
+.checkbox {
+    margin: 3px 5px 0 15px;
+    filter: invert(0.8);
+    font-size: var(--secondary-font-size)
+}
+
+.select {
+    font-size: var(--primary-font-size);
+    color: var(--primary-color);
+    background-color: var(--input-background);
+    border-radius: 10px 10px 10px 10px;
+    border: 2px solid var(--accent-background);
+}
+.submit{
+    width: 100%;
+    text-align: center;
+}
+.send {
+    background-color: var(--accent-color);
+    color: var(--primary-color-background);
+    border-color: var(--accent-color);
+    font-size: var(--secondary-font-size);
+}
+
+.errorField {
+    display: flex;
+    padding: 4px 6px;
+    width: fit-content;
+    flex-direction: row;
+    align-items: center;
+    background-color:red;
+    color: white;
+}
+
+.errorSign {
+    font-size: 12px;
+}
