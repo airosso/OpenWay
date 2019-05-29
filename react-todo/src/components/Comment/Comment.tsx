@@ -1,7 +1,7 @@
 import * as React from "react";
 
-import { ErrorWrapper } from "./ErrorWrapper";
-import style from "./Menu.module.css";
+import {ErrorWrapper} from "../ErrorWrapper/ErrorWrapper";
+import style from "./Comment.module.css";
 
 interface CommentsProps {
     name: string;
@@ -23,7 +23,7 @@ export const Comment = ({name, id, value, setValue}: CommentsProps) => {
         <ErrorWrapper id={id}>
             <p>
                 {name}
-                <textarea className={style.comment} rows={3} value={value} style={{ height: count * 20 + "px" }}
+                <textarea className={style.comment} rows={3} value={value} style={{height: count * 20 + "px"}}
                           onChange={(event) => setValue(event.target.value)}/>
             </p>
         </ErrorWrapper>

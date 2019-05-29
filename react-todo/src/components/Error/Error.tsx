@@ -1,6 +1,6 @@
 import * as React from "react";
-import style from "./Menu.module.css";
-import { FieldError } from "./MenuWork";
+import style from "./Error.module.css";
+import { FieldError } from "../RegistrationMenu/RegistrationMenuTs";
 
 export const Error = ({message}: FieldError) => {
     return (

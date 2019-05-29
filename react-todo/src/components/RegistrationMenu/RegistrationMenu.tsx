@@ -2,14 +2,13 @@ import * as React from "react";
 import { useState } from "react";
 
 import { CheckBox } from "../Checkbox/Checkbox";
-import { responses } from "./CheckboxData";
-import { Comments } from "./Comments";
-import { ErrorContext, ErrorWrapper } from "./ErrorWrapper";
-import { InputField } from "./InputField";
-import style from "./Menu.module.css";
-import { FieldError, submit } from "./MenuTs";
+import { Comment } from "../Comment/Comment";
+import { ErrorContext, ErrorWrapper } from "../ErrorWrapper/ErrorWrapper";
+import { InputField } from "../InputField/InputField";
+import style from "./RegistrationMenu.module.css";
+import { FieldError, submit, interestsCheckboxes } from "./RegistrationMenuTs";
 
-export const Menu = () => {
+export const RegistrationMenu = () => {
     const [name, setName] = useState("");
     const [surname, setSurname] = useState("");
     const [email, setEmail] = useState("");
@@ -59,7 +58,7 @@ export const Menu = () => {
         copy[name] = !current;
         setInterests(copy);
     };
-    const checkboxes = responses.map(({name, key}) => (
+    const checkboxes = interestsCheckboxes.map(({name, key}) => (
         <CheckBox key={key} name={name} setValue={updateCheckbox} value={!!interests[name]}/>));
 
 
@@ -99,13 +98,13 @@ export const Menu = () => {
                             {checkboxes}
                         </div>
                     </ErrorWrapper>
-                    <Comments name="Другое: " id="other" value={other} setValue={setOther}/>
-                    <Comments name="Ваши знания компьютерных технологий, прикладного ПО, языков программирования*: "
-                              id="knowledge" value={knowledge} setValue={setKnowledge}/>
-                    <Comments name="Опыт работы (если имеется): " id="experience" value={experience}
-                              setValue={setExperience}/>
-                    <Comments name="Откуда Вы узнали о Летней школе?: " id="inform" value={inform}
-                              setValue={setInform}/>
+                    <Comment name="Другое: " id="other" value={other} setValue={setOther}/>
+                    <Comment name="Ваши знания компьютерных технологий, прикладного ПО, языков программирования*: "
+                             id="knowledge" value={knowledge} setValue={setKnowledge}/>
+                    <Comment name="Опыт работы (если имеется): " id="experience" value={experience}
+                             setValue={setExperience}/>
+                    <Comment name="Откуда Вы узнали о Летней школе?: " id="inform" value={inform}
+                             setValue={setInform}/>
                     <ErrorWrapper id={"agreement"}>
                         <CheckBox
                             value={agreement}

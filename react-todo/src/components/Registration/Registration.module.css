@@ -8,13 +8,13 @@
 .logo {
     text-align: center;
     background-color: var(--secondary-color-background);
-    width:100%;
+    width: 100%;
     min-width: 400px;
 }
 
 .info {
     text-align: center;
-    width: 60%;
+    width: 720px;
     margin: 0 auto;
 }
 

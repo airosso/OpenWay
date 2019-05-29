@@ -1,4 +1,4 @@
-import {RegistrationData} from "../App/App";
+import {RegistrationData} from "../App/AppTs";
 import * as React from 'react';
 
 interface DataProps {

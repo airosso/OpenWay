@@ -1,0 +1,13 @@
+.errorField {
+    display: flex;
+    padding: 4px 6px;
+    width: fit-content;
+    flex-direction: row;
+    align-items: center;
+    background-color:red;
+    color: white;
+}
+
+.errorSign {
+    font-size: 12px;
+}

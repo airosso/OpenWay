@@ -1,7 +1,7 @@
 import { Component, useContext } from "react";
 import * as React from "react";
-import { Error } from "./Error";
-import { FieldError } from "./MenuWork";
+import { Error } from "../Error/Error";
+import { FieldError } from "../RegistrationMenu/RegistrationMenuTs";
 
 export const ErrorContext = React.createContext<FieldError[]>([]);
 
@@ -10,9 +10,10 @@ interface ErrorWrapperProps {
 }
 
 export class ErrorWrapper extends Component<ErrorWrapperProps> {
-    public static contextType = ErrorContext;
-    public context!: FieldError[];
-    public render() {
+    static contextType = ErrorContext;
+    context!: FieldError[];
+
+    render() {
         const errors = this.context;
         const error = errors.find((x) => x.field === this.props.id);
         return (

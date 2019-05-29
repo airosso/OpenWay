@@ -1,9 +1,30 @@
-import {RegistrationData} from "../App/App";
+import {RegistrationData} from "../App/AppTs";
 
 export interface FieldError {
     message: string;
     field: string;
 }
+
+interface Interest {
+    name: string;
+    key: string;
+}
+
+export const interestsCheckboxes: Interest[] = [
+    { name: "Бизнес-анализ, IT-консалтинг", key: "first"},
+    { name: "Backend-разработка", key: "second"},
+    { name: "Frontend-разработка", key: "third"},
+    { name: "Тестирование, управление качеством", key: "forth"},
+    { name: "Создание технической документации", key: "fifth"},
+    { name: "Внедрение сложного ПО (enterprise)", key: "sixth"},
+    { name: "Участие в финтех-проектах", key: "seventh"},
+    { name: "Работа с базами данных", key: "eighth"},
+    { name: "Поддержка клиентов", key: "ninth"},
+    { name: "Маркетинг в области IT", key: "tenth"},
+    { name: "Компьютерная безопасность", key: "eleventh"},
+    { name: "Другое (укажите в поле внизу)", key: "twelfth"},
+];
+
 
 export function submit(data: RegistrationData) {
     const errors: FieldError[] = [];

@@ -1,6 +1,6 @@
 import { createBrowserHistory } from "history";
 import React, { Component } from "react";
-import { Menu } from "../RegistrationMenu/Menu";
+import { RegistrationMenu } from "../RegistrationMenu/RegistrationMenu";
 import regLogo from "./images/OpenWay_icons.jpg";
 import style from "./Registration.module.css";
 
@@ -9,7 +9,7 @@ export class Registration extends Component {
         return (
             <div id="registration" className={style.reg}>
                 <div className={style.logo}>
-                    <img alt="logo"  src={regLogo} width="40%"/>
+                    <img alt="logo"  src={regLogo} width="720px"/>
                 </div>
                 <div className={style.info}>
                     <h1>Заявка на поступление в Летнюю Школу OpenWay</h1>
@@ -19,7 +19,7 @@ export class Registration extends Component {
                         или по телефону <a href="tel:+79219653263">+7 (921) 965 32 63</a> (mobile, whatsapp, telegram)
                     </p>
                 </div>
-                <Menu/>
+                <RegistrationMenu/>
             </div>
         );
     }

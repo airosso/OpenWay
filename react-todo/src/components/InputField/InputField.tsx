@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ErrorWrapper } from "../ErrorWrapper/ErrorWrapper";
+import {ErrorWrapper} from "../ErrorWrapper/ErrorWrapper";
 
 interface InputProps {
     name: string;
@@ -12,12 +12,14 @@ interface InputProps {
 
 export const InputField = ({name, id, className, type, value, setValue}: InputProps) => {
     return (
-        <ErrorWrapper id={id}>
-            <p>
-                <label htmlFor="name" style={{ display: "block", padding: "6px 10px"}}>{name}</label>
-                <input className={className} type={type} value={value}
-                       onChange={(event) => setValue(event.target.value)}/>
-            </p>
-        </ErrorWrapper>
+        <div style={{ marginTop: "10px", marginBottom: "10px"}}>
+            <ErrorWrapper id={id}>
+                <div>
+                    <label htmlFor="name" style={{display: "block", padding: "6px 10px"}}>{name}</label>
+                    <input className={className} type={type} value={value}
+                           onChange={(event) => setValue(event.target.value)}/>
+                </div>
+            </ErrorWrapper>
+        </div>
     );
 };

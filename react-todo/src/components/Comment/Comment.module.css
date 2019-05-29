@@ -1,0 +1,11 @@
+.comment {
+    margin-top: 8px;
+    font-size: var(--primary-font-size);
+    background-color: var(--input-background);
+    border: 2px solid var(--accent-background);
+    border-radius: 10px 10px 10px 10px;
+    width: 100%;
+    color: var(--primary-color);
+    min-height: 40px;
+    line-height: 20px;
+}
