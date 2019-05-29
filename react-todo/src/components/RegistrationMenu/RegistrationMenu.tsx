@@ -1,13 +1,13 @@
 import * as React from "react";
 import { useState } from "react";
 
-import { CheckBox } from "./Checkbox";
+import { CheckBox } from "../Checkbox/Checkbox";
 import { responses } from "./CheckboxData";
 import { Comments } from "./Comments";
 import { ErrorContext, ErrorWrapper } from "./ErrorWrapper";
 import { InputField } from "./InputField";
 import style from "./Menu.module.css";
-import { FieldError, submit } from "./MenuWork";
+import { FieldError, submit } from "./MenuTs";
 
 export const Menu = () => {
     const [name, setName] = useState("");
@@ -23,8 +23,9 @@ export const Menu = () => {
     const [knowledge, setKnowledge] = useState("");
     const [experience, setExperience] = useState("");
     const [inform, setInform] = useState("");
-    const [errors, setErrors] = useState<FieldError[]>([]);
     const [interests, setInterests] = useState<any>({});
+    const [errors, setErrors] = useState<FieldError[]>([]);
+    const [agreement, setAgreement] = useState(false);
 
     const submitData = () => {
         const result = submit({
@@ -47,6 +48,7 @@ export const Menu = () => {
             setKnowledge("");
             setExperience("");
             setInform("");
+            setAgreement(false);
         } else {
         }
     };
@@ -60,7 +62,6 @@ export const Menu = () => {
     const checkboxes = responses.map(({name, key}) => (
         <CheckBox key={key} name={name} setValue={updateCheckbox} value={!!interests[name]}/>));
 
-    const [agreement, setAgreement] = useState(false);
 
     return (
         <ErrorContext.Provider value={errors}>

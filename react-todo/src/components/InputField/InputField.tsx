@@ -1,5 +1,5 @@
 import * as React from "react";
-import { ErrorWrapper } from "./ErrorWrapper";
+import { ErrorWrapper } from "../ErrorWrapper/ErrorWrapper";
 
 interface InputProps {
     name: string;

@@ -10,12 +10,20 @@ interface CommentsProps {
     setValue: (newValue: string) => void;
 }
 
-export const Comments = ({name, id, value, setValue}: CommentsProps) => {
+export const Comment = ({name, id, value, setValue}: CommentsProps) => {
+
+    let count = 1;
+    for (let i = 0; i < value.length; i++) {
+        if (value.charAt(i) === "\n") {
+            count++;
+        }
+    }
+
     return (
         <ErrorWrapper id={id}>
             <p>
                 {name}
-                <textarea className={style.comment} rows={3} value={value}
+                <textarea className={style.comment} rows={3} value={value} style={{ height: count * 20 + "px" }}
                           onChange={(event) => setValue(event.target.value)}/>
             </p>
         </ErrorWrapper>
