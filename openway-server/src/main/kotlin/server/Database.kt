@@ -14,6 +14,20 @@ fun Database.initDatabase() {
             it[login] = "admin"
             it[hashPassword] = hashPassword("admin")
         }
+        Records.insert { 
+            it[name] = "Иван"
+            it[surname] = "Иванов"
+            it[date] = "01/01/2000"
+            it[university] = "ИТМО"
+            it[interests] = "Frontend-разработка"
+            it[email] = "ivan-ivan@gmail.com"
+            it[faculty] = "Факультет дизайна и урбанистики"
+            it[department] = "Городская информатика и прикладная урбанистика"
+            it[english] = "elementary"
+            it[knowledge] = "Знаю js, java, css, html, React"
+            it[agreement] = true
+
+        }
     }
 }
 
@@ -41,7 +55,7 @@ data class Record(
         val knowledge: String,
         val experience: String?,
         val inform: String?,
-        val admission: String,
+        val admission: String?,
         val agreement: Boolean
 )
 
@@ -60,6 +74,6 @@ object Records : IdTable<Long>("Records") {
     val knowledge = varchar("knowledge", 255)
     val experience = varchar("experience", 255).nullable()
     val inform = varchar("inform", 255).nullable()
-    val admission = varchar("admission", 255)
+    val admission = varchar("admission", 255).nullable()
     val agreement = bool("agreement")
 }

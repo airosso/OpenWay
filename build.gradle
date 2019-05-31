@@ -21,6 +21,6 @@ task clean(type: Delete) {
     delete 'build'
 }
 
-task cleanBuildPublish(type: GradleBuild) {
+task runApp(type: GradleBuild) {
     tasks = [":openway-frontend:build", ":openway-server:deployStatic", ":openway-server:build", ":openway-server:runAll"]
 }

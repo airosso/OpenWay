@@ -15,7 +15,7 @@ export const RegistrationDataView = ({data}: DataProps) => {
                         {Object.keys(x).map(key => (
                             <tr>
                                 <td>{"" + key}</td>
-                                <td>{"" + (x as any)[key]}</td>
+                                <td>{"" + (x as any)[key] == null ? "" : (x as any)[key]}</td>
                             </tr>
                         ))}
                     </table>

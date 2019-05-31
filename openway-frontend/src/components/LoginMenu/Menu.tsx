@@ -17,7 +17,7 @@ export const Menu = ({onLogin}: MenuProps) => {
             <ErrorWrapper id="login">
                 <InputField name="Login" id="log" className={style.field} type="text" value={login}
                             setValue={setLogin}/>
-                <InputField name="Password" id="password" className={style.field} type="text" value={password}
+                <InputField name="Password" id="password" className={style.field} type="password" value={password}
                             setValue={setPassword}/>
                 <input className={style.enter} type="button" value="Войти" onClick={() => onLogin(login, password)}/>
             </ErrorWrapper>
