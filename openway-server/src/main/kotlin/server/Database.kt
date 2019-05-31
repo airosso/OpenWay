@@ -58,7 +58,8 @@ data class Record(
         val interests: List<String>,
         val other: String?,
         val experience: String?,
-        val inform: String?
+        val inform: String?,
+        val agreement: Boolean
 )
 
 object Records : IdTable<Long>("Records") {
