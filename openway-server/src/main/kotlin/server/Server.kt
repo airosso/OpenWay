@@ -38,6 +38,10 @@ fun main() {
     val path = File("db").absolutePath
     val db = Database.connect("jdbc:h2:file:$path;", driver = "org.h2.Driver")
     db.initDatabase()
+    println()
+    println("http://localhost:7999/")
+    println("login: admin, password: admin")
+    println()
     val server = embeddedServer(Netty, port = 7999) {
         install(CallLogging) {
             level = Level.TRACE
@@ -80,8 +84,7 @@ fun main() {
                                     surname = it[Records.surname],
                                     university = it[Records.university],
                                     experience = it[Records.experience],
-                                    inform = it[Records.inform],
-                                    agreement = it[Records.agreement]
+                                    inform = it[Records.inform]
                             )
                         }
                     }
@@ -107,7 +110,6 @@ fun main() {
                     val newRecord = Json.parse(Record.serializer(), body)
                     transaction(db) {
                         Records.insert {
-                            it[agreement] = newRecord.agreement
                             it[admission] = newRecord.admission
                             it[date] = newRecord.date
                             it[department] = newRecord.department
@@ -118,8 +120,8 @@ fun main() {
                             it[knowledge] = newRecord.knowledge
                             it[name] = newRecord.name
                             it[surname] = newRecord.surname
-                            it[university] = newRecord.name
-                            it[interests] = newRecord.interests.joinToString(separator = "\n")
+                            it[university] = newRecord.university
+                            it[interests] = newRecord.interests.joinToString(separator = ", \n")
                         }
                     }
                     call.respond(HttpStatusCode.OK)

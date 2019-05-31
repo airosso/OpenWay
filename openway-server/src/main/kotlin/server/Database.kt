@@ -9,24 +9,27 @@ import org.jetbrains.exposed.sql.transactions.transaction
 fun Database.initDatabase() {
     transaction(this) {
         addLogger(StdOutSqlLogger)
-        SchemaUtils.create(Records, Admins)
-        Admins.insert {
-            it[login] = "admin"
-            it[hashPassword] = hashPassword("admin")
-        }
-        Records.insert { 
-            it[name] = "Иван"
-            it[surname] = "Иванов"
-            it[date] = "01/01/2000"
-            it[university] = "ИТМО"
-            it[interests] = "Frontend-разработка"
-            it[email] = "ivan-ivan@gmail.com"
-            it[faculty] = "Факультет дизайна и урбанистики"
-            it[department] = "Городская информатика и прикладная урбанистика"
-            it[english] = "elementary"
-            it[knowledge] = "Знаю js, java, css, html, React"
-            it[agreement] = true
-
+        if (!Admins.exists()) {
+            SchemaUtils.create(Records, Admins)
+            Admins.insert {
+                it[login] = "admin"
+                it[hashPassword] = hashPassword("admin")
+            }
+            Records.insert {
+                it[name] = "Иван"
+                it[surname] = "Иванов"
+                it[date] = "2000-01-01"
+                it[university] = "ИТМО"
+                it[interests] = "Frontend-разработка"
+                it[email] = "ivan-ivan@gmail.com"
+                it[faculty] = "Факультет дизайна и урбанистики"
+                it[department] = "Городская информатика и прикладная урбанистика"
+                it[english] = "elementary"
+                it[knowledge] = "Знаю js, java, css, html, React"
+                it[admission] = "2015"
+                it[experience] = "Не работал"
+                it[inform] = "Увидел пост в вк"
+            }
         }
     }
 }
@@ -45,18 +48,17 @@ data class Record(
         val name: String,
         val surname: String,
         val date: String,
-        val university: String,
-        val interests: List<String>,
         val email: String,
+        val university: String,
         val faculty: String,
         val department: String,
-        val english: String,
-        val other: String?,
-        val knowledge: String,
-        val experience: String?,
-        val inform: String?,
         val admission: String?,
-        val agreement: Boolean
+        val english: String,
+        val knowledge: String,
+        val interests: List<String>,
+        val other: String?,
+        val experience: String?,
+        val inform: String?
 )
 
 object Records : IdTable<Long>("Records") {
@@ -75,5 +77,4 @@ object Records : IdTable<Long>("Records") {
     val experience = varchar("experience", 255).nullable()
     val inform = varchar("inform", 255).nullable()
     val admission = varchar("admission", 255).nullable()
-    val agreement = bool("agreement")
 }
