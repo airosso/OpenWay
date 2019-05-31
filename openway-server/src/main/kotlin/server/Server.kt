@@ -84,7 +84,8 @@ fun main() {
                                     surname = it[Records.surname],
                                     university = it[Records.university],
                                     experience = it[Records.experience],
-                                    inform = it[Records.inform]
+                                    inform = it[Records.inform],
+                                    agreement = true
                             )
                         }
                     }
