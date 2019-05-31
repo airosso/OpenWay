@@ -5,6 +5,14 @@ body {
     margin: 0;
 }
 
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
+
 .app{
     --primary-color: #f4f4f4;;
     --primary-color-background: #111;;

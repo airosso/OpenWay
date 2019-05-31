@@ -14,6 +14,34 @@ input {
     margin-left: 10px;
 }
 
+.alert {
+    background-color: var(--accent-color);
+    color: black;
+    font-size: var(--primary-font-size);
+    text-align: center;
+    padding: 4px;
+    border-radius: 6px;
+    transition: opacity 1s;
+    position: fixed;
+    z-index: 3;
+    margin: auto 0;
+    top: 20px;
+}
+
+.alertRed {
+    background-color: red;
+    color: whitesmoke;
+    font-size: var(--primary-font-size);
+    text-align: center;
+    padding: 4px;
+    border-radius: 6px;
+    transition: opacity 1s;
+    position: fixed;
+    z-index: 3;
+    margin: auto 0;
+    top: 20px;
+}
+
 a {
     white-space: nowrap;
     color: #ffe83f;

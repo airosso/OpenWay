@@ -7,12 +7,12 @@ buildscript {
 apply plugin: 'com.moowork.node'
 
 task build(type: NodeTask, dependsOn: npmInstall) {
-    script = file('./node_modules/.bin/react-scripts')
+    script = file('./node_modules/react-scripts/bin/react-scripts.js')
     args = ['build']
 }
 
 task run(type: NodeTask, dependsOn: npmInstall) {
-    script = file('./node_modules/.bin/react-scripts')
+    script = file('./node_modules/.bin/react-scripts/bin/react-scripts.js')
     args = ['start']
 }
 

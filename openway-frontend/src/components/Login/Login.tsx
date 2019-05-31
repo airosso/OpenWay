@@ -34,12 +34,7 @@ export const Login = () => {
                 <div className={style.header}>
                     <img alt="logo" src={logLogo} width="40%"/>
                 </div>
-                {(!logged) ?
-                    <ErrorWrapper id={"login"}>
-                        <Menu onLogin={onLogin}/>
-                    </ErrorWrapper>
-                    : <RegistrationDataView data={data}/>
-                }
+                {(!logged) ? <Menu onLogin={onLogin}/> : <RegistrationDataView data={data}/>}
             </div>
         </ErrorContext.Provider>
     );

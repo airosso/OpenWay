@@ -7,8 +7,20 @@ interface DataProps {
 
 export const RegistrationDataView = ({data}: DataProps) => {
     return (
-        <ul>
-            {data.map(x => (<li key={x.name}>{JSON.stringify(x)}</li>))}
-        </ul>
+        <div style={{paddingLeft: "30px"}}>
+            <p>Количество заявок: {data.length}</p>
+            {data.map(x => (
+                <div style={{padding: "10px"}}>
+                    <table>
+                        {Object.keys(x).map(key => (
+                            <tr>
+                                <td>{"" + key}</td>
+                                <td>{"" + (x as any)[key]}</td>
+                            </tr>
+                        ))}
+                    </table>
+                </div>
+            ))}
+        </div>
     )
 };

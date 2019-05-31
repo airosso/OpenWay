@@ -27,6 +27,9 @@ export const RegistrationMenu = () => {
     const [errors, setErrors] = useState<FieldError[]>([]);
     const [agreement, setAgreement] = useState(false);
 
+    const [alertVisible, setAlert] = useState(false);
+    const [alertRedVisible, setAlertRed] = useState(false);
+
     const submitData = () => {
         const dd = {
             name, surname, email, date, university,
@@ -51,8 +54,15 @@ export const RegistrationMenu = () => {
             setInform("");
             setAgreement(false);
             sendData(dd).then((x) => {
-                console.log(x)
+                console.log(x);
+                setAlert(true);
+                setTimeout(() => setAlert(false), 6000)
+            }).catch(x => {
+                alert("Произошла ошибка: " + x)
             })
+        } else {
+            setAlertRed(true);
+            setTimeout(() => setAlertRed(false), 6000);
         }
     };
 
@@ -71,6 +81,12 @@ export const RegistrationMenu = () => {
     return (
         <ErrorContext.Provider value={errors}>
             <div className={style.menu}>
+                <div className={style.alert} style={{ opacity: alertVisible ? 1 : 0 }}>
+                    Ваша заявка отправлена
+                </div>
+                <div className={style.alertRed} style={{ opacity: alertRedVisible ? 1 : 0 }}>
+                    Не все поля заполнены верно
+                </div>
                 <form id="regOpenWay">
                     <InputField name="Имя*: " id="name" className={style.text} type="text" value={name}
                                 setValue={setName}/>
