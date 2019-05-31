@@ -7,31 +7,33 @@ import { ErrorContext, ErrorWrapper } from "../ErrorWrapper/ErrorWrapper";
 import { InputField } from "../InputField/InputField";
 import style from "./RegistrationMenu.module.css";
 import { FieldError, submit, interestsCheckboxes } from "./RegistrationMenuTs";
+import {sendData} from "../Login/LoginTs";
 
 export const RegistrationMenu = () => {
-    const [name, setName] = useState("");
-    const [surname, setSurname] = useState("");
-    const [email, setEmail] = useState("");
-    const [date, setDate] = useState("");
-    const [university, setUniversity] = useState("");
-    const [faculty, setFaculty] = useState("");
-    const [department, setDepartment] = useState("");
-    const [admission, setAdmission] = useState("");
-    const [english, setEnglish] = useState("");
-    const [other, setOther] = useState("");
-    const [knowledge, setKnowledge] = useState("");
-    const [experience, setExperience] = useState("");
-    const [inform, setInform] = useState("");
-    const [interests, setInterests] = useState<any>({});
+    const [name, setName] = useState("Name");
+    const [surname, setSurname] = useState("SurName");
+    const [email, setEmail] = useState("vlad9931");
+    const [date, setDate] = useState("1999");
+    const [university, setUniversity] = useState("ITMO");
+    const [faculty, setFaculty] = useState("fak");
+    const [department, setDepartment] = useState("cock");
+    const [admission, setAdmission] = useState("adm?");
+    const [english, setEnglish] = useState("no");
+    const [other, setOther] = useState("????");
+    const [knowledge, setKnowledge] = useState("sdfsdf");
+    const [experience, setExperience] = useState("sdfdd");
+    const [inform, setInform] = useState("sdfsfd");
+    const [interests, setInterests] = useState<string[]>([]);
     const [errors, setErrors] = useState<FieldError[]>([]);
     const [agreement, setAgreement] = useState(false);
 
     const submitData = () => {
-        const result = submit({
+        const dd = {
             name, surname, email, date, university,
             faculty, department, admission, english, agreement,
             other, knowledge, experience, inform, interests
-        });
+        };
+        const result = submit(dd);
         setErrors(result);
         if (result.length === 0) {
             setName("");
@@ -48,18 +50,22 @@ export const RegistrationMenu = () => {
             setExperience("");
             setInform("");
             setAgreement(false);
-        } else {
+            sendData(dd).then((x) => {
+                console.log(x)
+            })
         }
     };
 
     const updateCheckbox = (name: string) => {
-        const current = !!interests[name];
-        const copy = {...interests};
-        copy[name] = !current;
-        setInterests(copy);
+        const current = interests.includes(name);
+        if (current) {
+            setInterests(interests.filter(x => x !== name));
+        } else {
+            setInterests([...interests, name])
+        }
     };
     const checkboxes = interestsCheckboxes.map(({name, key}) => (
-        <CheckBox key={key} name={name} setValue={updateCheckbox} value={!!interests[name]}/>));
+        <CheckBox key={key} name={name} setValue={updateCheckbox} value={interests.includes(name)}/>));
 
 
     return (

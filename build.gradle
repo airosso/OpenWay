@@ -1,0 +1,26 @@
+group 'openway'
+
+allprojects {
+    buildscript {
+        repositories {
+            jcenter()
+            mavenCentral()
+            maven { url "https://plugins.gradle.org/m2/" }
+        }
+    }
+
+    repositories {
+        jcenter()
+        maven { url "https://dl.bintray.com/kotlin/kotlinx" }
+        maven { url "https://dl.bintray.com/kotlin/ktor" }
+        maven { url "https://dl.bintray.com/pgutkowski/Maven" }
+    }
+}
+
+task clean(type: Delete) {
+    delete 'build'
+}
+
+task cleanBuildPublish(type: GradleBuild) {
+    tasks = [":openway-frontend:build", ":openway-server:deployStatic", ":openway-server:build", ":openway-server:runAll"]
+}

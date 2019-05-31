@@ -29,7 +29,6 @@ export const interestsCheckboxes: Interest[] = [
 export function submit(data: RegistrationData) {
     const errors: FieldError[] = [];
     const state: any = data;
-    console.log(Object.keys(state));
     const nonEmptyFields = ["name", "surname", "email", "date", "university", "faculty", "department", "english", "knowledge"];
     Object.keys(state).filter((x) => nonEmptyFields.includes(x)).forEach((field) => {
         if (state[field] !== undefined && state[field].trim().length === 0) {
@@ -46,7 +45,7 @@ export function submit(data: RegistrationData) {
             field: "agreement"
         });
     }
-    if (Object.keys(state.interests).every(x => !state[x])) {
+    if (Object.keys(state.interests).every(x => !state.interests[x])) {
         errors.push({
             field: "interests",
             message: "Вы должны выбрать хотя бы один пункт"

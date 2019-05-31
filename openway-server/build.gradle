@@ -7,6 +7,7 @@ buildscript {
     }
     dependencies {
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+        classpath "org.jetbrains.kotlin:kotlin-serialization:$kotlin_version"
     }
 }
 
@@ -19,12 +20,14 @@ version '1.0'
 
 apply plugin: 'java'
 apply plugin: 'kotlin'
+apply plugin: 'kotlinx-serialization'
 
 sourceCompatibility = 1.8
 
 repositories {
     mavenCentral()
     jcenter()
+    maven { url "https://kotlin.bintray.com/kotlinx" }
 }
 
 dependencies {
@@ -35,6 +38,25 @@ dependencies {
     compile "io.ktor:ktor-server-core:$ktor_version"
     compile "io.ktor:ktor-server-netty:$ktor_version"
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    compile "org.jetbrains.kotlinx:kotlinx-serialization-runtime:0.11.0"
+}
+
+task cleanStatic(type: Delete) {
+    delete 'src/main/resources/static'
+}
+
+task deployStatic(type: Copy, dependsOn: 'cleanStatic') {
+    from fileTree('../openway-frontend/build')
+    into 'src/main/resources/static'
+}
+
+processResources { dependsOn 'deployStatic' }
+clean { dependsOn 'cleanStatic' }
+
+task runAll(type: JavaExec) {
+    main = 'server.Server'
+    classpath = sourceSets.main.runtimeClasspath
 }
 
 compileKotlin {

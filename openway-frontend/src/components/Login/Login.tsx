@@ -15,8 +15,9 @@ export const Login = () => {
 
     const onLogin = (login: string, password: string) => {
         getData(login, password).then(x => {
-                setLogged(true);
                 setData(x);
+                setLogged(true);
+                console.info(x);
             }
         ).catch(x => {
             setError({

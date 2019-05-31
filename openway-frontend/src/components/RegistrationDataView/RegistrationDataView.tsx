@@ -6,5 +6,9 @@ interface DataProps {
 }
 
 export const RegistrationDataView = ({data}: DataProps) => {
-    return (<div>FUCK ME</div>);
-}
+    return (
+        <ul>
+            {data.map(x => (<li key={x.name}>{JSON.stringify(x)}</li>))}
+        </ul>
+    )
+};
