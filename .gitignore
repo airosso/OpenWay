@@ -15,5 +15,10 @@ npm-debug.log*
 # Testing
 /coverage
 
+**/*.db
+
+openway-server/build
+openway-frontend/build
+
 # Production
 /build
